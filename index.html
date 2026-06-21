@@ -18,7 +18,7 @@
   <main class="container">
     <section class="intro">
       <h2>Waarom meedoen?</h2>
-      <p>Als uw teelt onder het nationale gemiddelde CO₂‑intensiteit zit, helpen wij u bij het vermarkten van laag‑koolstof diervoeder. Vul het formulier in en stuur de gegevens naar ons — we nemen contact op voor vervolgstappen en prijsafspraken.</p>
+      <p>De gangbare databanken waarmee grote bedrijven in de ketens rekenen zijn onnauwkeurig. Grote kans dat de voetafdruk van uw teelt onder het nationaal gemiddelde zit. Wij helpen u bij het verfieren van deze lagere voetafdruk. Vul het formulier vrijblijvend in en stuur het op. Wij nemen contact op voor vervolgstappen.</p>
     </section>
 
     <section class="form-section" aria-labelledby="form-heading">
@@ -27,7 +27,8 @@
       <form id="farmForm" novalidate>
         <fieldset>
           <legend>Basisgegevens</legend>
-          <label>Boer / Coöperatie
+
+          <label>Bedrijf / Coöperatie
             <input type="text" id="farmName" name="farmName" required />
           </label>
 
@@ -42,10 +43,22 @@
           <label>Telefoon (optioneel)
             <input type="tel" id="contactPhone" name="contactPhone" />
           </label>
+
+          <label>Grondsoort
+            <select id="soilType" name="soilType" required>
+              <option value="">-- kies grondsoort --</option>
+              <option value="zand">Zand</option>
+              <option value="klei">Klei</option>
+              <option value="leem">Leem</option>
+              <option value="veen">Veen</option>
+              <option value="löss">Löss</option>
+            </select>
+          </label>
         </fieldset>
 
         <fieldset>
           <legend>Gewasgegevens</legend>
+
           <label>Gewas
             <select id="crop" name="crop" required>
               <option value="">-- kies gewas --</option>
@@ -61,7 +74,7 @@
             <input type="number" id="area" name="area" min="0" step="0.01" required />
           </label>
 
-          <label>Opbrengst (ton/ha)
+          <label>Opbrengst (ton per ha)
             <input type="number" id="yield" name="yield" min="0" step="0.01" required />
           </label>
 
@@ -71,46 +84,42 @@
         </fieldset>
 
         <fieldset>
-          <legend>Inputgegevens (per jaar of per ha — geef aan in opmerkingen)</legend>
+          <legend>Inputgegevens (geef eenheid per veld)</legend>
 
-          <label>Stikstofmest (kg N)
+          <label>Stikstofmest (kg N per ha)
             <input type="number" id="fertN" name="fertN" min="0" step="0.1" />
           </label>
 
-          <label>Fosfaatmest (kg P₂O₅)
+          <label>Fosfaat (kg P₂O₅ per ha)
             <input type="number" id="fertP" name="fertP" min="0" step="0.1" />
           </label>
 
-          <label>Kalium (kg K₂O)
+          <label>Kalium (kg K₂O per ha)
             <input type="number" id="fertK" name="fertK" min="0" step="0.1" />
           </label>
 
-          <label>Zaad (kg)
+          <label>Zaad (kg per ha)
             <input type="number" id="seed" name="seed" min="0" step="0.1" />
           </label>
 
-          <label>Pesticiden (l of kg)
-            <input type="number" id="pesticide" name="pesticide" min="0" step="0.01" />
+          <label>Gewasbescherming (l of kg per ha)
+            <input type="number" id="protection" name="protection" min="0" step="0.01" />
           </label>
 
-          <label>Diesel (liter)
+          <label>Diesel (liter per ha)
             <input type="number" id="diesel" name="diesel" min="0" step="0.1" />
           </label>
 
-          <label>Elektriciteit (kWh)
+          <label>Elektriciteit (kWh per jaar)
             <input type="number" id="electricity" name="electricity" min="0" step="0.1" />
           </label>
 
-          <label>Transport afstand naar opslag (km)
+          <label>Transport afstand naar opslag (km per jaar)
             <input type="number" id="transport" name="transport" min="0" step="0.1" />
           </label>
 
-          <label>Opslag energie (kWh)
+          <label>Opslag energie (kWh per jaar)
             <input type="number" id="storageEnergy" name="storageEnergy" min="0" step="0.1" />
-          </label>
-
-          <label>Manure applied (ton)
-            <input type="number" id="manure" name="manure" min="0" step="0.01" />
           </label>
 
           <label>Opmerkingen / extra context
