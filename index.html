@@ -14,75 +14,53 @@
     --muted:#6b7063;
     --field:#2f5d3a;
     --field-deep:#1e3f27;
+    --field-soft:#e8efe6;
     --clay:#a9743f;
+    --clay-soft:#f3ebde;
     --line:#dcdcd2;
     --line-soft:#ebebe1;
     --focus:#2f5d3a;
+    --warn:#9a3b2f;
     --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-size:16px;
-    line-height:1.55;
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.55
   }
 
-  /* ---- header ---- */
-  .topbar{
-    border-bottom:1px solid var(--line);
-    background:var(--paper);
-  }
-  .topbar-inner{
-    max-width:760px;margin:0 auto;padding:18px 22px;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
-  }
+  /* header */
+  .topbar{border-bottom:1px solid var(--line);background:var(--paper)}
+  .topbar-inner{max-width:780px;margin:0 auto;padding:18px 22px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px}
   .brand{font-weight:700;letter-spacing:-0.01em;font-size:1.05rem}
-  .brand small{
-    display:block;font-weight:500;font-size:.7rem;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--muted);margin-top:2px;font-family:var(--mono)
-  }
+  .brand small{display:block;font-weight:500;font-size:.7rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-top:2px;font-family:var(--mono)}
   .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-  .lang button{
-    appearance:none;border:0;background:transparent;cursor:pointer;
+  .lang button{appearance:none;border:0;background:transparent;cursor:pointer;
     font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.06em;
-    padding:7px 14px;color:var(--muted)
-  }
+    padding:7px 14px;color:var(--muted)}
   .lang button[aria-pressed="true"]{background:var(--field);color:#fff}
   .lang button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 
-  /* ---- layout ---- */
-  main{max-width:760px;margin:0 auto;padding:38px 22px 80px}
-  .hero h1{
-    font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.1;letter-spacing:-0.02em;
-    margin:0 0 12px;font-weight:700
-  }
+  main{max-width:780px;margin:0 auto;padding:38px 22px 80px}
+  .hero h1{font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.1;letter-spacing:-0.02em;
+    margin:0 0 12px;font-weight:700}
   .hero p.lead{font-size:1.12rem;color:var(--muted);margin:0 0 8px;max-width:54ch}
-  .why{
-    margin:28px 0 8px;padding:20px 22px;background:var(--panel);
-    border:1px solid var(--line);border-left:3px solid var(--clay);border-radius:6px
-  }
+  .why{margin:28px 0 8px;padding:20px 22px;background:var(--panel);
+    border:1px solid var(--line);border-left:3px solid var(--clay);border-radius:6px}
   .why h2{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
     font-family:var(--mono);color:var(--clay);margin:0 0 10px}
   .why p{margin:0;color:var(--ink)}
 
-  /* ---- form sections ---- */
   form{margin-top:34px}
-  .section{
-    background:var(--panel);border:1px solid var(--line);border-radius:8px;
-    padding:24px 22px;margin-bottom:18px
-  }
-  .section > legend, .section-head{
-    display:flex;align-items:baseline;gap:12px;width:100%;padding:0;margin:0 0 18px
-  }
-  .stage{
-    font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.08em;
-    color:#fff;background:var(--field);border-radius:4px;padding:3px 8px;flex:0 0 auto
-  }
+  .section{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+    padding:24px 22px;margin-bottom:18px}
+  .section-head{display:flex;align-items:baseline;gap:12px;width:100%;padding:0;margin:0 0 18px}
+  .stage{font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.08em;
+    color:#fff;background:var(--field);border-radius:4px;padding:3px 8px;flex:0 0 auto}
   .section-head h3{font-size:1.08rem;margin:0;font-weight:650;letter-spacing:-0.01em}
   fieldset{border:0;padding:0;margin:0}
 
@@ -95,57 +73,86 @@
   label .opt{font-weight:500;color:var(--muted)}
   .hint{font-size:.74rem;color:var(--muted);font-family:var(--mono);line-height:1.4}
 
-  input,select,textarea{
-    font-family:var(--sans);font-size:.95rem;color:var(--ink);
+  input,select,textarea{font-family:var(--sans);font-size:.95rem;color:var(--ink);
     background:#fff;border:1px solid var(--line);border-radius:6px;
-    padding:9px 11px;width:100%;
-  }
+    padding:9px 11px;width:100%}
   input::placeholder,textarea::placeholder{color:#a7ab9e}
   textarea{resize:vertical;min-height:74px;line-height:1.5}
-  input:focus,select:focus,textarea:focus{
-    outline:2px solid var(--focus);outline-offset:1px;border-color:var(--field)
-  }
-  /* numeric fields get a mono treatment to read as measurements */
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--focus);
+    outline-offset:1px;border-color:var(--field)}
   input[inputmode="decimal"],input[type="number"]{font-family:var(--mono);letter-spacing:.01em}
 
-  .check{
-    display:flex;gap:12px;align-items:flex-start;
-    background:#f6f7f1;border:1px solid var(--line-soft);border-radius:6px;padding:14px 15px
-  }
+  .check{display:flex;gap:12px;align-items:flex-start;
+    background:#f6f7f1;border:1px solid var(--line-soft);border-radius:6px;padding:14px 15px}
   .check input{width:auto;margin-top:3px;flex:0 0 auto}
   .check label{font-weight:500;color:var(--ink);font-size:.88rem}
 
-  /* honeypot */
   .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
 
-  /* ---- actions ---- */
+  /* reference panel */
+  .ref{background:var(--clay-soft);border:1px solid #e7d9c1;border-left:3px solid var(--clay);
+    border-radius:6px;padding:18px 20px;margin-bottom:18px}
+  .ref-head{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--clay);margin:0 0 12px;font-weight:700}
+  .ref-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    flex-wrap:wrap;margin-bottom:8px}
+  .ref-crop{font-weight:600;font-size:1rem}
+  .ref-value{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--ink)}
+  .ref-value .unit{font-size:.78rem;font-weight:500;color:var(--muted);margin-left:4px}
+  .ref-cite{font-size:.74rem;color:var(--muted);line-height:1.5;margin-top:8px;
+    font-family:var(--mono)}
+  .ref-empty{font-size:.88rem;color:var(--muted);font-style:italic}
+
+  /* results panel */
+  .results{background:var(--field-soft);border:1px solid #c8dac4;border-left:3px solid var(--field);
+    border-radius:6px;padding:22px 22px;margin-top:14px;display:none}
+  .results.show{display:block}
+  .results h4{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--field-deep);margin:0 0 14px;font-weight:700}
+  .res-headline{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+    flex-wrap:wrap;border-bottom:1px solid #c8dac4;padding-bottom:14px;margin-bottom:14px}
+  .res-total{font-family:var(--mono);font-size:1.9rem;font-weight:700;color:var(--field-deep);
+    letter-spacing:-0.01em;line-height:1}
+  .res-total .unit{font-size:.85rem;font-weight:500;color:var(--muted);margin-left:6px;
+    letter-spacing:0}
+  .res-yield{font-size:.82rem;color:var(--muted);font-family:var(--mono)}
+  .res-compare{padding:10px 12px;background:#fff;border:1px solid #c8dac4;border-radius:6px;
+    font-size:.92rem;margin-bottom:14px}
+  .res-delta{font-weight:700;font-family:var(--mono)}
+  .res-delta.down{color:var(--field-deep)}
+  .res-delta.up{color:var(--warn)}
+  .breakdown{list-style:none;padding:0;margin:0}
+  .breakdown li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;
+    font-size:.88rem;border-bottom:1px dashed #d9e3d4}
+  .breakdown li:last-child{border-bottom:0}
+  .breakdown .cat{color:var(--ink)}
+  .breakdown .val{font-family:var(--mono);color:var(--field-deep);font-weight:600}
+  .res-disc{font-size:.76rem;color:var(--muted);margin-top:14px;line-height:1.5}
+
+  /* actions */
   .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-  button.btn{
-    appearance:none;font-family:var(--sans);font-size:.92rem;font-weight:600;
-    cursor:pointer;border-radius:6px;padding:11px 18px;border:1px solid var(--field)
-  }
+  button.btn{appearance:none;font-family:var(--sans);font-size:.92rem;font-weight:600;
+    cursor:pointer;border-radius:6px;padding:11px 18px;border:1px solid var(--field)}
   .btn.primary{background:var(--field);color:#fff}
   .btn.primary:hover{background:var(--field-deep)}
   .btn.ghost{background:#fff;color:var(--field)}
   .btn.ghost:hover{background:#f2f5ef}
+  .btn.accent{background:var(--clay);color:#fff;border-color:var(--clay)}
+  .btn.accent:hover{background:#8c5e30}
   .btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 
   .status{margin-top:14px;font-size:.9rem;min-height:1.2em}
   .status.ok{color:var(--field-deep)}
-  .status.err{color:#9a3b2f}
+  .status.err{color:var(--warn)}
 
-  .summary{
-    margin-top:16px;background:#1d231b;color:#e9ece3;border-radius:8px;
+  .summary{margin-top:16px;background:#1d231b;color:#e9ece3;border-radius:8px;
     padding:18px 20px;font-family:var(--mono);font-size:.8rem;line-height:1.5;
-    white-space:pre-wrap;word-break:break-word;display:none
-  }
+    white-space:pre-wrap;word-break:break-word;display:none}
   .summary.show{display:block}
 
-  .privacy{
-    margin-top:26px;font-size:.84rem;color:var(--muted);
-    border-top:1px solid var(--line);padding-top:18px
-  }
-  footer{max-width:760px;margin:0 auto;padding:0 22px 50px;color:var(--muted);
+  .privacy{margin-top:26px;font-size:.84rem;color:var(--muted);
+    border-top:1px solid var(--line);padding-top:18px}
+  footer{max-width:780px;margin:0 auto;padding:0 22px 50px;color:var(--muted);
     font-family:var(--mono);font-size:.74rem;letter-spacing:.04em}
 
   @media (prefers-reduced-motion:no-preference){
@@ -180,12 +187,9 @@
 
   <form id="crop-form" novalidate>
 
-    <!-- 01 basis -->
     <fieldset class="section">
-      <div class="section-head">
-        <span class="stage">01</span>
-        <h3 data-i18n="s_basis">Basisgegevens</h3>
-      </div>
+      <div class="section-head"><span class="stage">01</span>
+        <h3 data-i18n="s_basis">Basisgegevens</h3></div>
       <div class="grid">
         <div class="field">
           <label for="company" data-i18n="l_company">Bedrijf / Coöperatie</label>
@@ -203,7 +207,16 @@
           <label for="phone" data-i18n="l_phone">Telefoon <span class="opt" data-i18n="optional">(optioneel)</span></label>
           <input id="phone" name="phone" type="tel" autocomplete="tel">
         </div>
-        <div class="field full">
+        <div class="field">
+          <label for="country" data-i18n="l_country">Land</label>
+          <select id="country" name="country">
+            <option value="nl" data-i18n="o_nl">Nederland</option>
+            <option value="de" data-i18n="o_de">Duitsland</option>
+            <option value="be" data-i18n="o_be">België</option>
+            <option value="other" data-i18n="o_othc">Anders</option>
+          </select>
+        </div>
+        <div class="field">
           <label for="soil_type" data-i18n="l_soil">Grondsoort</label>
           <select id="soil_type" name="soil_type">
             <option value="" data-i18n="o_soil_pick">-- kies grondsoort --</option>
@@ -217,12 +230,9 @@
       </div>
     </fieldset>
 
-    <!-- 02 gewas -->
     <fieldset class="section">
-      <div class="section-head">
-        <span class="stage">02</span>
-        <h3 data-i18n="s_crop">Gewas en opbrengst</h3>
-      </div>
+      <div class="section-head"><span class="stage">02</span>
+        <h3 data-i18n="s_crop">Gewas en opbrengst</h3></div>
       <div class="grid">
         <div class="field">
           <label for="crop" data-i18n="l_crop">Gewas</label>
@@ -247,7 +257,7 @@
         <div class="field">
           <label for="harvest_moisture_pct" data-i18n="l_hmoist">Oogstvocht (%)</label>
           <input id="harvest_moisture_pct" name="harvest_moisture_pct" type="number" inputmode="decimal" min="0" max="100" step="any">
-          <span class="hint" data-i18n="h_hmoist">nodig om naar referentievocht te normaliseren</span>
+          <span class="hint" data-i18n="h_hmoist">wordt genormaliseerd naar 88% droge stof</span>
         </div>
         <div class="field">
           <label for="harvest_year" data-i18n="l_year">Oogstjaar</label>
@@ -256,12 +266,9 @@
       </div>
     </fieldset>
 
-    <!-- 03 bemesting -->
     <fieldset class="section">
-      <div class="section-head">
-        <span class="stage">03</span>
-        <h3 data-i18n="s_fert">Bemesting</h3>
-      </div>
+      <div class="section-head"><span class="stage">03</span>
+        <h3 data-i18n="s_fert">Bemesting</h3></div>
       <div class="grid">
         <div class="field full">
           <label for="n_fert_type" data-i18n="l_ntype">Type stikstofmeststof</label>
@@ -309,19 +316,27 @@
           <label for="manure_t_ha" data-i18n="l_mqty">Hoeveelheid (ton per ha)</label>
           <input id="manure_t_ha" name="manure_t_ha" type="number" inputmode="decimal" min="0" step="any">
         </div>
-        <div class="field full">
+        <div class="field">
           <label for="manure_n_per_t" data-i18n="l_mn">Stikstofgehalte mest (kg N per ton) <span class="opt" data-i18n="ifknown">(indien bekend)</span></label>
           <input id="manure_n_per_t" name="manure_n_per_t" type="number" inputmode="decimal" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="app_method" data-i18n="l_appmeth">Toepassingsmethode</label>
+          <select id="app_method" name="app_method">
+            <option value="" data-i18n="o_pick">-- kies --</option>
+            <option value="breedwerpig" data-i18n="o_app_broad">Bovengronds / breedwerpig</option>
+            <option value="sleepslang" data-i18n="o_app_hose">Sleepslang / sleufkouter</option>
+            <option value="ingewerkt" data-i18n="o_app_inc">Direct ingewerkt (binnen 24u)</option>
+            <option value="injectie" data-i18n="o_app_inj">Zodebemesting / injectie</option>
+          </select>
+          <span class="hint" data-i18n="h_appmeth">beïnvloedt NH₃- en N₂O-emissies van organische mest</span>
         </div>
       </div>
     </fieldset>
 
-    <!-- 04 gewasbescherming -->
     <fieldset class="section">
-      <div class="section-head">
-        <span class="stage">04</span>
-        <h3 data-i18n="s_prot">Gewasbescherming en zaaizaad</h3>
-      </div>
+      <div class="section-head"><span class="stage">04</span>
+        <h3 data-i18n="s_prot">Gewasbescherming en zaaizaad</h3></div>
       <div class="grid">
         <div class="field full">
           <label for="pesticides" data-i18n="l_pest">Middelen — naam, werkzame stof, dosering (kg of l per ha)</label>
@@ -340,12 +355,9 @@
       </div>
     </fieldset>
 
-    <!-- 05 energie -->
     <fieldset class="section">
-      <div class="section-head">
-        <span class="stage">05</span>
-        <h3 data-i18n="s_energy">Energie veld en irrigatie</h3>
-      </div>
+      <div class="section-head"><span class="stage">05</span>
+        <h3 data-i18n="s_energy">Energie veld en irrigatie</h3></div>
       <div class="grid">
         <div class="field">
           <label for="diesel_l_ha" data-i18n="l_diesel">Diesel (liter per ha)</label>
@@ -363,12 +375,9 @@
       </div>
     </fieldset>
 
-    <!-- 06 droging en opslag -->
     <fieldset class="section">
-      <div class="section-head">
-        <span class="stage">06</span>
-        <h3 data-i18n="s_dry">Droging en opslag</h3>
-      </div>
+      <div class="section-head"><span class="stage">06</span>
+        <h3 data-i18n="s_dry">Droging en opslag</h3></div>
       <div class="grid">
         <div class="field">
           <label for="dry_moisture_out_pct" data-i18n="l_outmoist">Vocht na droging / opslagvocht (%)</label>
@@ -378,15 +387,15 @@
           <label for="dry_energy_carrier" data-i18n="l_drycar">Energiedrager droging</label>
           <select id="dry_energy_carrier" name="dry_energy_carrier">
             <option value="geen" data-i18n="o_nodry">Geen droging</option>
-            <option value="aardgas" data-i18n="o_gas">Aardgas</option>
-            <option value="propaan_lpg" data-i18n="o_lpg">Propaan / LPG</option>
-            <option value="diesel" data-i18n="o_dieselc">Diesel</option>
-            <option value="elektriciteit" data-i18n="o_elecc">Elektriciteit</option>
-            <option value="biomassa" data-i18n="o_biomass">Biomassa</option>
+            <option value="aardgas" data-i18n="o_gas">Aardgas (m³ per ton)</option>
+            <option value="propaan_lpg" data-i18n="o_lpg">Propaan / LPG (liter per ton)</option>
+            <option value="diesel" data-i18n="o_dieselc">Diesel (liter per ton)</option>
+            <option value="elektriciteit" data-i18n="o_elecc">Elektriciteit (kWh per ton)</option>
+            <option value="biomassa" data-i18n="o_biomass">Biomassa (kWh per ton)</option>
           </select>
         </div>
         <div class="field">
-          <label for="dry_energy_per_t" data-i18n="l_dryuse">Energieverbruik droging (kWh of m³ gas per ton)</label>
+          <label for="dry_energy_per_t" data-i18n="l_dryuse">Energieverbruik droging (per ton vers)</label>
           <input id="dry_energy_per_t" name="dry_energy_per_t" type="number" inputmode="decimal" min="0" step="any">
         </div>
         <div class="field">
@@ -396,15 +405,12 @@
       </div>
     </fieldset>
 
-    <!-- 07 transport en reststromen -->
     <fieldset class="section">
-      <div class="section-head">
-        <span class="stage">07</span>
-        <h3 data-i18n="s_trans">Transport en reststromen</h3>
-      </div>
+      <div class="section-head"><span class="stage">07</span>
+        <h3 data-i18n="s_trans">Transport en reststromen</h3></div>
       <div class="grid">
         <div class="field">
-          <label for="transport_km" data-i18n="l_km">Afstand naar eerste opslag / verzamelpunt (km)</label>
+          <label for="transport_km" data-i18n="l_km">Afstand naar eerste opslag (km)</label>
           <input id="transport_km" name="transport_km" type="number" inputmode="decimal" min="0" step="any">
         </div>
         <div class="field">
@@ -423,12 +429,9 @@
       </div>
     </fieldset>
 
-    <!-- 08 verklaring en datakwaliteit -->
     <fieldset class="section">
-      <div class="section-head">
-        <span class="stage">08</span>
-        <h3 data-i18n="s_decl">Verklaring en datakwaliteit</h3>
-      </div>
+      <div class="section-head"><span class="stage">08</span>
+        <h3 data-i18n="s_decl">Verklaring en datakwaliteit</h3></div>
       <div class="grid">
         <div class="field full">
           <div class="check">
@@ -456,7 +459,25 @@
       </div>
     </fieldset>
 
-    <!-- honeypot for spam -->
+    <!-- 09 indicative calculator + reference panel -->
+    <fieldset class="section">
+      <div class="section-head"><span class="stage">09</span>
+        <h3 data-i18n="s_calc">Indicatieve voetafdruk en referentie</h3></div>
+
+      <div class="ref" id="ref-panel">
+        <div class="ref-head" data-i18n="ref_head">Referentiewaarde uit publieke databanken</div>
+        <div id="ref-content">
+          <div class="ref-empty" data-i18n="ref_empty">Kies eerst een gewas (sectie 02) om de databankwaarde te zien.</div>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:6px">
+        <button type="button" class="btn accent" id="calc-btn" data-i18n="b_calc">Bereken indicatieve voetafdruk</button>
+      </div>
+
+      <div class="results" id="results" aria-live="polite"></div>
+    </fieldset>
+
     <div class="hp" aria-hidden="true">
       <label>Laat dit veld leeg<input type="text" name="botcheck" tabindex="-1" autocomplete="off"></label>
     </div>
@@ -480,11 +501,101 @@
 /* =========================================================================
    1. CONFIG
    ========================================================================= */
-// Replace with your real Web3Forms access key before going live.
 const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
 
 /* =========================================================================
-   2. TRANSLATIONS  (field NAMES stay constant, only visible text changes)
+   2. EMISSION FACTORS  (all sources cited — verify before going live)
+   ========================================================================= */
+const EF = {
+  // Fertiliser production, kg CO2e per kg nutrient
+  // Source: Fertilizers Europe — Carbon Footprint Reference Values (2018, modern BAT European plants)
+  // https://www.fertilizerseurope.com
+  n_production: {
+    kas_can: 3.6,   // CAN / KAS, EU avg
+    ureum:   3.5,   // urea production only (hydrolysis CO2 added separately below)
+    an:      6.7,   // ammonium nitrate, EU avg
+    as:      1.4,   // ammonium sulphate (byproduct credit, low)
+    npk:     5.5,   // mixed NPK average
+    anders:  5.0    // fallback
+  },
+  // Urea CO2 from field hydrolysis: CO(NH2)2 + H2O -> 2 NH3 + CO2
+  // Stoichiometry: 60 g urea (28 g N) releases 44 g CO2 -> 1.57 kg CO2 per kg N
+  urea_hydrolysis_co2_per_kg_n: 1.57,
+  // Phosphate (TSP, EU avg) and potash (MOP, EU avg)
+  // Source: ecoinvent v3.8 / Agri-footprint v6, kg CO2e per kg nutrient
+  p_production: 1.0,
+  k_production: 0.6,
+  // Lime: stoichiometric CO2 release, IPCC 2006/2019 default
+  // CaCO3 -> CaO + CO2 -> 44/100 = 0.44 kg CO2 per kg CaCO3
+  lime: 0.44,
+  // Field N2O — IPCC 2019 Refinement, Tier 1, wet climate
+  // EF1 synthetic = 0.016 kg N2O-N per kg N applied
+  // EF1 organic   = 0.006 kg N2O-N per kg N applied
+  n2o_synth_direct: 0.016,
+  n2o_organic_direct: 0.006,
+  // Indirect N2O lumped (volatilisation EF4 + leaching EF5) ≈ 30% of direct in wet climates
+  n2o_indirect_factor: 0.30,
+  // GWP100 N2O, IPCC AR6 (2021)
+  gwp_n2o: 273,
+  // Diesel well-to-wheel, kg CO2e per litre (RVO 2024, DEFRA 2024)
+  diesel: 3.2,
+  // Grid electricity, kg CO2e per kWh
+  // NL: 0.27 (CBS, 2024 gemiddelde leveringsmix)
+  // DE: 0.38 (UBA, 2024 Strommix)
+  electricity_nl: 0.27,
+  electricity_de: 0.38,
+  // Seed, kg CO2e per kg seed (rough cereal avg incl. processing & dressing)
+  seed: 0.6,
+  // Crop protection per spray pass — very rough, based on typical product mass × ~10 kg CO2e/kg ai
+  pest_per_pass: 6,
+  // Drying energy carrier EFs (per stated unit)
+  drying: {
+    aardgas:      2.0,   // kg CO2e per m3 natural gas (NL national grid mix)
+    propaan_lpg:  1.6,   // kg CO2e per litre LPG/propane
+    diesel:       3.2,   // kg CO2e per litre
+    biomassa:     0.04   // kg CO2e per kWh (residual after biogenic exclusion)
+    // elektriciteit handled via grid EF
+  },
+  // Truck transport, kg CO2e per tonne-km (heavy articulated >32t, DEFRA)
+  transport_tkm: 0.10,
+  // Application-method multiplier on organic-N N2O (reflects NH3 loss differences)
+  // Source: derived from EMEP/EEA Air Pollutant Emission Inventory Guidebook 2023
+  app_method_mult: {
+    breedwerpig: 1.00,
+    sleepslang:  0.85,
+    ingewerkt:   0.80,
+    injectie:    0.65
+  }
+};
+
+// Default N content of manure types (kg N per tonne fresh, NL/DE averages)
+// Source: KWIN-Veehouderij / WUR animal manure tables
+const MANURE_N_DEFAULT = {
+  geen: 0,
+  runderdrijfmest: 4.4,
+  varkensdrijfmest: 7.2,
+  vaste_mest:       6.5,
+  digestaat:        4.0,
+  compost:          8.0,
+  anders:           5.0
+};
+
+/* =========================================================================
+   3. REFERENCE VALUES (illustrative, kg CO2e per tonne at 88% DM, cradle-to-farm-gate)
+   Source: GFLI Database (https://globalfeedlca.org), Agri-footprint v6 (Blonk Sustainability, 2022),
+           FEFAC Feed Sustainability Charter reference work.
+   These are rounded approximations; verify and update before publication.
+   ========================================================================= */
+const REF_VALUES = {
+  tarwe:    { nl: { low: 420, mid: 480, high: 540 }, de: { low: 380, mid: 440, high: 510 } },
+  rogge:    { nl: { low: 360, mid: 420, high: 480 }, de: { low: 340, mid: 390, high: 450 } },
+  gerst:    { nl: { low: 390, mid: 440, high: 500 }, de: { low: 360, mid: 410, high: 470 } },
+  mais:     { nl: { low: 410, mid: 470, high: 540 }, de: { low: 380, mid: 440, high: 510 } },
+  raapzaad: { nl: { low: 820, mid: 960, high:1120 }, de: { low: 760, mid: 880, high:1040 } }
+};
+
+/* =========================================================================
+   4. TRANSLATIONS
    ========================================================================= */
 const I18N = {
   page_title:{nl:"Duurzaam Diervoeder — Aanmelding CO₂-arme gewassen",de:"Duurzaam Diervoeder — Anmeldung CO₂-armer Kulturen"},
@@ -503,6 +614,11 @@ const I18N = {
   optional:{nl:"(optioneel)",de:"(optional)"},
   ifknown:{nl:"(indien bekend)",de:"(falls bekannt)"},
   ifsep:{nl:"(indien apart)",de:"(falls separat)"},
+  l_country:{nl:"Land",de:"Land"},
+  o_nl:{nl:"Nederland",de:"Niederlande"},
+  o_de:{nl:"Duitsland",de:"Deutschland"},
+  o_be:{nl:"België",de:"Belgien"},
+  o_othc:{nl:"Anders",de:"Sonstige"},
   l_soil:{nl:"Grondsoort",de:"Bodenart"},
   o_soil_pick:{nl:"-- kies grondsoort --",de:"-- Bodenart wählen --"},
   o_sand:{nl:"Zand",de:"Sand"},
@@ -523,7 +639,7 @@ const I18N = {
   l_yield:{nl:"Opbrengst (ton per ha)",de:"Ertrag (Tonnen pro ha)"},
   h_yield:{nl:"bij oogstvocht — zie hieronder",de:"bei Erntefeuchte — siehe unten"},
   l_hmoist:{nl:"Oogstvocht (%)",de:"Erntefeuchte (%)"},
-  h_hmoist:{nl:"nodig om naar referentievocht te normaliseren",de:"nötig zur Normierung auf Referenzfeuchte"},
+  h_hmoist:{nl:"wordt genormaliseerd naar 88% droge stof",de:"wird auf 88% Trockenmasse normiert"},
   l_year:{nl:"Oogstjaar",de:"Erntejahr"},
 
   s_fert:{nl:"Bemesting",de:"Düngung"},
@@ -550,6 +666,12 @@ const I18N = {
   o_other2:{nl:"Anders",de:"Sonstige"},
   l_mqty:{nl:"Hoeveelheid (ton per ha)",de:"Menge (Tonnen pro ha)"},
   l_mn:{nl:"Stikstofgehalte mest (kg N per ton)",de:"Stickstoffgehalt Dünger (kg N pro Tonne)"},
+  l_appmeth:{nl:"Toepassingsmethode",de:"Ausbringungsverfahren"},
+  o_app_broad:{nl:"Bovengronds / breedwerpig",de:"Breitverteilung / oberflächlich"},
+  o_app_hose:{nl:"Sleepslang / sleufkouter",de:"Schleppschlauch / Schleppschuh"},
+  o_app_inc:{nl:"Direct ingewerkt (binnen 24u)",de:"Direkt eingearbeitet (innerhalb 24h)"},
+  o_app_inj:{nl:"Zodebemesting / injectie",de:"Schlitzinjektion / Gülleinjektion"},
+  h_appmeth:{nl:"beïnvloedt NH₃- en N₂O-emissies van organische mest",de:"beeinflusst NH₃- und N₂O-Emissionen aus Wirtschaftsdünger"},
 
   s_prot:{nl:"Gewasbescherming en zaaizaad",de:"Pflanzenschutz und Saatgut"},
   l_pest:{nl:"Middelen — naam, werkzame stof, dosering (kg of l per ha)",de:"Mittel — Name, Wirkstoff, Aufwandmenge (kg oder l pro ha)"},
@@ -568,16 +690,16 @@ const I18N = {
   l_outmoist:{nl:"Vocht na droging / opslagvocht (%)",de:"Feuchte nach Trocknung / Lagerfeuchte (%)"},
   l_drycar:{nl:"Energiedrager droging",de:"Energieträger Trocknung"},
   o_nodry:{nl:"Geen droging",de:"Keine Trocknung"},
-  o_gas:{nl:"Aardgas",de:"Erdgas"},
-  o_lpg:{nl:"Propaan / LPG",de:"Propan / LPG"},
-  o_dieselc:{nl:"Diesel",de:"Diesel"},
-  o_elecc:{nl:"Elektriciteit",de:"Strom"},
-  o_biomass:{nl:"Biomassa",de:"Biomasse"},
-  l_dryuse:{nl:"Energieverbruik droging (kWh of m³ gas per ton)",de:"Energieverbrauch Trocknung (kWh oder m³ Gas pro Tonne)"},
+  o_gas:{nl:"Aardgas (m³ per ton)",de:"Erdgas (m³ pro Tonne)"},
+  o_lpg:{nl:"Propaan / LPG (liter per ton)",de:"Propan / LPG (Liter pro Tonne)"},
+  o_dieselc:{nl:"Diesel (liter per ton)",de:"Diesel (Liter pro Tonne)"},
+  o_elecc:{nl:"Elektriciteit (kWh per ton)",de:"Strom (kWh pro Tonne)"},
+  o_biomass:{nl:"Biomassa (kWh per ton)",de:"Biomasse (kWh pro Tonne)"},
+  l_dryuse:{nl:"Energieverbruik droging (per ton vers)",de:"Energieverbrauch Trocknung (pro Tonne Frischmasse)"},
   l_store:{nl:"Opslagenergie (kWh per ton)",de:"Lagerenergie (kWh pro Tonne)"},
 
   s_trans:{nl:"Transport en reststromen",de:"Transport und Reststoffe"},
-  l_km:{nl:"Afstand naar eerste opslag / verzamelpunt (km)",de:"Entfernung zum ersten Lager / Sammelpunkt (km)"},
+  l_km:{nl:"Afstand naar eerste opslag (km)",de:"Entfernung zum ersten Lager (km)"},
   l_load:{nl:"Belading (ton per rit)",de:"Beladung (Tonnen pro Fahrt)"},
   l_res:{nl:"Stro / gewasresten",de:"Stroh / Ernterückstände"},
   o_left:{nl:"Achtergebleven op veld",de:"Auf dem Feld verblieben"},
@@ -593,13 +715,40 @@ const I18N = {
   o_estimated:{nl:"Grotendeels geschat",de:"Überwiegend geschätzt"},
   l_remarks:{nl:"Opmerkingen / extra context",de:"Anmerkungen / zusätzlicher Kontext"},
 
+  // calculator + reference
+  s_calc:{nl:"Indicatieve voetafdruk en referentie",de:"Indikativer Fußabdruck und Referenz"},
+  ref_head:{nl:"Referentiewaarde uit publieke databanken",de:"Referenzwert aus öffentlichen Datenbanken"},
+  ref_empty:{nl:"Kies eerst een gewas (sectie 02) om de databankwaarde te zien.",de:"Wählen Sie zunächst eine Kultur (Abschnitt 02), um den Datenbankwert zu sehen."},
+  ref_for:{nl:"voor",de:"für"},
+  ref_unit:{nl:"kg CO₂e per ton bij 88% DS",de:"kg CO₂e pro Tonne bei 88% TM"},
+  ref_cite:{nl:"Bron: GFLI Database (globalfeedlca.org), Agri-footprint v6 (Blonk Sustainability, 2022), FEFAC Feed Sustainability Charter. Cradle-to-farm-gate, exclusief dLUC. Indicatieve range — werkelijke databankwaarden kunnen afwijken per herkomst en jaartal.",de:"Quelle: GFLI Database (globalfeedlca.org), Agri-footprint v6 (Blonk Sustainability, 2022), FEFAC Feed Sustainability Charter. Cradle-to-farm-gate, ohne dLUC. Indikative Bandbreite — tatsächliche Datenbankwerte können je nach Herkunft und Jahr abweichen."},
+  ref_chain:{nl:"Dit is de range waarmee veevoederbedrijven uw teelt nu standaard rekenen.",de:"Mit dieser Bandbreite rechnen Futtermittelunternehmen Ihren Anbau derzeit standardmäßig."},
+
+  b_calc:{nl:"Bereken indicatieve voetafdruk",de:"Indikativen Fußabdruck berechnen"},
+  res_head:{nl:"Uw indicatieve voetafdruk",de:"Ihr indikativer Fußabdruck"},
+  res_yield_norm:{nl:"Genormaliseerde opbrengst",de:"Normierter Ertrag"},
+  res_tonne_unit:{nl:"ton/ha bij 88% DS",de:"t/ha bei 88% TM"},
+  res_unit:{nl:"kg CO₂e per ton (88% DS)",de:"kg CO₂e pro Tonne (88% TM)"},
+  res_breakdown:{nl:"Verdeling per categorie",de:"Aufschlüsselung nach Kategorie"},
+  res_lower:{nl:"lager dan databankgemiddelde",de:"niedriger als Datenbankmittel"},
+  res_higher:{nl:"hoger dan databankgemiddelde",de:"höher als Datenbankmittel"},
+  res_similar:{nl:"vergelijkbaar met databankgemiddelde",de:"vergleichbar mit Datenbankmittel"},
+  res_disclaimer:{nl:"Indicatief — niet gecertificeerd. Gebruikt IPCC 2019 Tier 1 wet-climate emissiefactoren, FertilizersEurope referentiewaarden, en GWP100 (IPCC AR6). Geverifieerde primaire data verkleint de onzekerheid aanzienlijk en kan tot een lagere waarde leiden.",de:"Indikativ — nicht zertifiziert. Verwendet IPCC 2019 Tier 1 Emissionsfaktoren (feuchtes Klima), Fertilizers Europe Referenzwerte, und GWP100 (IPCC AR6). Verifizierte Primärdaten verringern die Unsicherheit erheblich und können zu einem niedrigeren Wert führen."},
+  res_need_yield:{nl:"Vul minstens opbrengst (sectie 02) en oogstvocht in voor een berekening.",de:"Bitte mindestens Ertrag (Abschnitt 02) und Erntefeuchte angeben."},
+  res_need_crop:{nl:"Kies een gewas in sectie 02.",de:"Wählen Sie eine Kultur in Abschnitt 02."},
+  cat_fert:{nl:"Bemesting — productie",de:"Düngung — Produktion"},
+  cat_n2o:{nl:"Veld-N₂O (direct + indirect)",de:"Feld-N₂O (direkt + indirekt)"},
+  cat_fuel:{nl:"Brandstof en elektriciteit veldwerk",de:"Kraftstoff und Strom Feldarbeit"},
+  cat_other:{nl:"Zaaizaad en gewasbescherming",de:"Saatgut und Pflanzenschutz"},
+  cat_drying:{nl:"Droging",de:"Trocknung"},
+  cat_logistics:{nl:"Opslag en transport",de:"Lagerung und Transport"},
+
   b_summary:{nl:"Bekijk samenvatting",de:"Zusammenfassung anzeigen"},
   b_json:{nl:"Download JSON",de:"JSON herunterladen"},
   b_send:{nl:"Stuur naar Duurzaam Diervoeder",de:"An Duurzaam Diervoeder senden"},
   privacy:{nl:"<strong>Privacy:</strong> uw gegevens worden niet centraal opgeslagen op deze site. U kiest zelf of u de gegevens downloadt of per e-mail verzendt.",de:"<strong>Datenschutz:</strong> Ihre Daten werden auf dieser Seite nicht zentral gespeichert. Sie entscheiden selbst, ob Sie die Daten herunterladen oder per E-Mail senden."},
   pilot:{nl:"Pilot",de:"Pilot"},
 
-  // status / system strings
   st_required:{nl:"Vul minstens uw e-mailadres en gewas in.",de:"Bitte geben Sie mindestens E-Mail und Kultur an."},
   st_sending:{nl:"Bezig met verzenden…",de:"Wird gesendet…"},
   st_ok:{nl:"Verzonden. Wij nemen contact met u op.",de:"Gesendet. Wir melden uns bei Ihnen."},
@@ -608,7 +757,7 @@ const I18N = {
 };
 
 /* =========================================================================
-   3. LANGUAGE ENGINE
+   5. LANGUAGE ENGINE
    ========================================================================= */
 let LANG = "nl";
 
@@ -634,6 +783,9 @@ function applyLang(lang){
   const url = new URL(window.location);
   url.searchParams.set("lang", LANG);
   history.replaceState(null,"",url);
+
+  // refresh dependent panels
+  updateReferencePanel();
 }
 
 function initLang(){
@@ -648,7 +800,7 @@ document.getElementById("btn-nl").addEventListener("click",()=>applyLang("nl"));
 document.getElementById("btn-de").addEventListener("click",()=>applyLang("de"));
 
 /* =========================================================================
-   4. DATA COLLECTION  (keyed by constant name attributes)
+   6. DATA COLLECTION
    ========================================================================= */
 function collectData(){
   const form = document.getElementById("crop-form");
@@ -670,7 +822,189 @@ function setStatus(key, kind){
 }
 
 /* =========================================================================
-   5. SUMMARY + JSON DOWNLOAD
+   7. REFERENCE PANEL
+   ========================================================================= */
+function getCountryKey(){
+  const c = document.getElementById("country").value;
+  return (c === "de") ? "de" : "nl";  // BE and other default to NL set
+}
+
+function cropLabel(cropKey){
+  const map = { tarwe:"o_wheat", rogge:"o_rye", gerst:"o_barley", mais:"o_maize", raapzaad:"o_rape" };
+  return t(map[cropKey] || "") || cropKey;
+}
+
+function fmtNum(x){
+  return new Intl.NumberFormat(LANG === "de" ? "de-DE" : "nl-NL",
+    { maximumFractionDigits: 0 }).format(Math.round(x));
+}
+
+function updateReferencePanel(){
+  const cropKey = document.getElementById("crop").value;
+  const ctry = getCountryKey();
+  const box = document.getElementById("ref-content");
+  if(!cropKey || !REF_VALUES[cropKey]){
+    box.innerHTML = `<div class="ref-empty">${t("ref_empty")}</div>`;
+    return;
+  }
+  const r = REF_VALUES[cropKey][ctry];
+  const label = cropLabel(cropKey);
+  box.innerHTML = `
+    <div class="ref-row">
+      <div class="ref-crop">${label} <span style="font-weight:500;color:var(--muted)">— ${ctry.toUpperCase()}</span></div>
+      <div class="ref-value">${fmtNum(r.low)}–${fmtNum(r.high)}<span class="unit">${t("ref_unit")}</span></div>
+    </div>
+    <div style="font-size:.84rem;color:var(--ink);margin-top:4px">${t("ref_chain")}</div>
+    <div class="ref-cite">${t("ref_cite")}</div>
+  `;
+}
+
+document.getElementById("crop").addEventListener("change", updateReferencePanel);
+document.getElementById("country").addEventListener("change", updateReferencePanel);
+
+/* =========================================================================
+   8. CALCULATION ENGINE
+   ========================================================================= */
+function n(x){ return parseFloat(x) || 0; }
+
+function calculateFootprint(data){
+  const yield_t   = n(data.yield_t_ha);
+  const h_moist   = n(data.harvest_moisture_pct);
+  if(!data.crop) return { error: "no_crop" };
+  if(yield_t <= 0 || h_moist <= 0) return { error: "no_yield" };
+
+  // normalise yield to 88% DM
+  const dm_pct = 100 - h_moist;
+  const yield_88 = yield_t * dm_pct / 88;
+  if(yield_88 <= 0) return { error: "no_yield" };
+
+  // ---- per-hectare items ----
+  const n_kg     = n(data.n_kg_ha);
+  const n_type   = data.n_fert_type || "anders";
+  const ef_n     = EF.n_production[n_type] || EF.n_production.anders;
+
+  const synth_n_prod = n_kg * ef_n;
+  const urea_co2     = (n_type === "ureum") ? n_kg * EF.urea_hydrolysis_co2_per_kg_n : 0;
+  const p_prod       = n(data.p2o5_kg_ha) * EF.p_production;
+  const k_prod       = n(data.k2o_kg_ha) * EF.k_production;
+  const lime_co2     = n(data.lime_kg_ha) * EF.lime;
+
+  // manure N
+  const m_t          = n(data.manure_t_ha);
+  const m_n_per_t    = n(data.manure_n_per_t) || MANURE_N_DEFAULT[data.manure_type] || 0;
+  const m_n_total    = m_t * m_n_per_t;
+
+  // application method multiplier on organic-N N2O (1.0 if not selected)
+  const app_mult     = EF.app_method_mult[data.app_method] || 1.0;
+
+  // direct N2O (kg CO2e per ha)
+  const n2o_synth    = n_kg     * EF.n2o_synth_direct   * (44/28) * EF.gwp_n2o;
+  const n2o_manure   = m_n_total * EF.n2o_organic_direct * (44/28) * EF.gwp_n2o * app_mult;
+  const n2o_indirect = (n2o_synth + n2o_manure) * EF.n2o_indirect_factor;
+
+  // diesel + field elec
+  const grid     = (getCountryKey() === "de") ? EF.electricity_de : EF.electricity_nl;
+  const diesel   = n(data.diesel_l_ha) * EF.diesel;
+  const field_el = n(data.electricity_kwh_ha) * grid;
+
+  // seed + pesticides
+  const seed_co2 = n(data.seed_kg_ha) * EF.seed;
+  const pests    = n(data.spray_passes) * EF.pest_per_pass;
+
+  // ---- per tonne (88% DM) ----
+  const cat_fert_t  = (synth_n_prod + urea_co2 + p_prod + k_prod + lime_co2) / yield_88;
+  const cat_n2o_t   = (n2o_synth + n2o_manure + n2o_indirect) / yield_88;
+  const cat_fuel_t  = (diesel + field_el) / yield_88;
+  const cat_other_t = (seed_co2 + pests) / yield_88;
+
+  // drying (per tonne fresh — acceptable approximation for per-88%DM tonne)
+  let cat_dry_t = 0;
+  const dry_use = n(data.dry_energy_per_t);
+  const dry_car = data.dry_energy_carrier;
+  if(dry_car === "elektriciteit") cat_dry_t = dry_use * grid;
+  else if(dry_car && EF.drying[dry_car] != null) cat_dry_t = dry_use * EF.drying[dry_car];
+
+  // storage + transport
+  const cat_log_t = n(data.storage_kwh_t) * grid + n(data.transport_km) * EF.transport_tkm;
+
+  const total = cat_fert_t + cat_n2o_t + cat_fuel_t + cat_other_t + cat_dry_t + cat_log_t;
+
+  return {
+    yield_88,
+    total,
+    categories: {
+      cat_fert: cat_fert_t,
+      cat_n2o:  cat_n2o_t,
+      cat_fuel: cat_fuel_t,
+      cat_other:cat_other_t,
+      cat_drying: cat_dry_t,
+      cat_logistics: cat_log_t
+    }
+  };
+}
+
+function renderResults(res){
+  const box = document.getElementById("results");
+  if(res.error === "no_crop"){
+    box.innerHTML = `<div style="color:var(--warn);font-size:.92rem">${t("res_need_crop")}</div>`;
+    box.classList.add("show");
+    return;
+  }
+  if(res.error === "no_yield"){
+    box.innerHTML = `<div style="color:var(--warn);font-size:.92rem">${t("res_need_yield")}</div>`;
+    box.classList.add("show");
+    return;
+  }
+
+  // comparison vs reference midpoint
+  const cropKey = document.getElementById("crop").value;
+  const ctry = getCountryKey();
+  let compareHtml = "";
+  if(cropKey && REF_VALUES[cropKey]){
+    const refMid = REF_VALUES[cropKey][ctry].mid;
+    const delta = res.total - refMid;
+    const pct = refMid > 0 ? Math.round((delta / refMid) * 100) : 0;
+    let phrase = "", cls = "";
+    if(Math.abs(pct) < 5){ phrase = t("res_similar"); cls = ""; }
+    else if(pct < 0){ phrase = t("res_lower"); cls = "down"; }
+    else { phrase = t("res_higher"); cls = "up"; }
+    compareHtml = `<div class="res-compare">
+      <span class="res-delta ${cls}">${pct > 0 ? "+" : ""}${pct}%</span> ${phrase}
+      <span style="color:var(--muted)"> (${fmtNum(refMid)} ${t("ref_unit")})</span>
+    </div>`;
+  }
+
+  // breakdown rows
+  const cats = ["cat_fert","cat_n2o","cat_fuel","cat_other","cat_drying","cat_logistics"];
+  const rows = cats.map(k => {
+    const v = res.categories[k];
+    if(v <= 0) return "";
+    return `<li><span class="cat">${t(k)}</span><span class="val">${fmtNum(v)}</span></li>`;
+  }).join("");
+
+  box.innerHTML = `
+    <h4>${t("res_head")}</h4>
+    <div class="res-headline">
+      <div class="res-total">${fmtNum(res.total)}<span class="unit">${t("res_unit")}</span></div>
+      <div class="res-yield">${t("res_yield_norm")}: ${res.yield_88.toFixed(2)} ${t("res_tonne_unit")}</div>
+    </div>
+    ${compareHtml}
+    <div style="font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--field-deep);margin:6px 0 6px;font-weight:700">${t("res_breakdown")}</div>
+    <ul class="breakdown">${rows}</ul>
+    <p class="res-disc">${t("res_disclaimer")}</p>
+  `;
+  box.classList.add("show");
+}
+
+document.getElementById("calc-btn").addEventListener("click", ()=>{
+  const data = collectData();
+  const res = calculateFootprint(data);
+  renderResults(res);
+  document.getElementById("results").scrollIntoView({behavior:"smooth", block:"nearest"});
+});
+
+/* =========================================================================
+   9. SUMMARY + JSON DOWNLOAD
    ========================================================================= */
 document.getElementById("summary-btn").addEventListener("click",()=>{
   const data = collectData();
@@ -692,12 +1026,10 @@ document.getElementById("json-btn").addEventListener("click",()=>{
 });
 
 /* =========================================================================
-   6. SUBMIT  (Web3Forms — language-agnostic field names)
+   10. SUBMIT  (Web3Forms — language-agnostic field names)
    ========================================================================= */
 document.getElementById("crop-form").addEventListener("submit", async (e)=>{
   e.preventDefault();
-
-  // honeypot
   const hp = document.querySelector('input[name="botcheck"]');
   if(hp && hp.value){ return; }
 
@@ -726,6 +1058,8 @@ document.getElementById("crop-form").addEventListener("submit", async (e)=>{
     if(out.success){
       setStatus("st_ok","ok");
       document.getElementById("crop-form").reset();
+      document.getElementById("results").classList.remove("show");
+      updateReferencePanel();
     } else {
       setStatus("st_err","err");
     }
@@ -735,10 +1069,11 @@ document.getElementById("crop-form").addEventListener("submit", async (e)=>{
 });
 
 /* =========================================================================
-   7. INIT
+   11. INIT
    ========================================================================= */
 document.getElementById("year").textContent = new Date().getFullYear();
 initLang();
+updateReferencePanel();
 </script>
 </body>
 </html>
