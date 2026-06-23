@@ -153,7 +153,14 @@
   .privacy{margin-top:26px;font-size:.84rem;color:var(--muted);
     border-top:1px solid var(--line);padding-top:18px}
   footer{max-width:780px;margin:0 auto;padding:0 22px 50px;color:var(--muted);
-    font-family:var(--mono);font-size:.74rem;letter-spacing:.04em}
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    flex-wrap:wrap}
+  footer a{color:var(--muted);text-decoration:underline;
+    text-decoration-color:var(--line);text-underline-offset:2px}
+  footer a:hover{color:var(--field);text-decoration-color:var(--field)}
+  .foot-count{color:#c8c8b8;font-size:.7rem;font-variant-numeric:tabular-nums;
+    letter-spacing:0;flex:0 0 auto}
 
   @media (prefers-reduced-motion:no-preference){
     .btn,.lang button{transition:background .15s ease,color .15s ease}
@@ -495,13 +502,16 @@
   </form>
 </main>
 
-<footer>© <span id="year"></span> Duurzaam Diervoeder — <span data-i18n="pilot">Pilot</span></footer>
+<footer>
+  <div class="foot-text">© <span id="year"></span> DuurzaamDiervoeder - A pilot initiative by <a href="https://ecoagrianalytics.com" target="_blank" rel="noopener">EcoAgriAnalytics.com</a></div>
+  <div class="foot-count" id="visit-count" aria-hidden="true"></div>
+</footer>
 
 <script>
 /* =========================================================================
    1. CONFIG
    ========================================================================= */
-const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+const CONTACT_EMAIL = "info@duurzaamdiervoeder.nl";
 
 /* =========================================================================
    2. EMISSION FACTORS  (all sources cited — verify before going live)
@@ -750,6 +760,7 @@ const I18N = {
   pilot:{nl:"Pilot",de:"Pilot"},
 
   st_required:{nl:"Vul minstens uw e-mailadres en gewas in.",de:"Bitte geben Sie mindestens E-Mail und Kultur an."},
+  st_mailto:{nl:"E-mailclient geopend. Klik op Verzenden in uw e-mailprogramma om af te ronden.",de:"E-Mail-Programm geöffnet. Klicken Sie in Ihrem E-Mail-Programm auf Senden zum Abschluss."},
   st_sending:{nl:"Bezig met verzenden…",de:"Wird gesendet…"},
   st_ok:{nl:"Verzonden. Wij nemen contact met u op.",de:"Gesendet. Wir melden uns bei Ihnen."},
   st_err:{nl:"Verzenden mislukt. Probeer het opnieuw of download de JSON.",de:"Senden fehlgeschlagen. Bitte erneut versuchen oder JSON herunterladen."},
@@ -851,7 +862,7 @@ function updateReferencePanel(){
   const label = cropLabel(cropKey);
   box.innerHTML = `
     <div class="ref-row">
-      <div class="ref-crop">${label} <span style="font-weight:500;color:var(--muted)">— ${ctry.toUpperCase()}</span></div>
+      <div class="ref-crop">${label}</div>
       <div class="ref-value">${fmtNum(r.low)}–${fmtNum(r.high)}<span class="unit">${t("ref_unit")}</span></div>
     </div>
     <div style="font-size:.84rem;color:var(--ink);margin-top:4px">${t("ref_chain")}</div>
@@ -1026,9 +1037,51 @@ document.getElementById("json-btn").addEventListener("click",()=>{
 });
 
 /* =========================================================================
-   10. SUBMIT  (Web3Forms — language-agnostic field names)
+   10. SUBMIT  (opens user's mail client to info@duurzaamdiervoeder.nl)
    ========================================================================= */
-document.getElementById("crop-form").addEventListener("submit", async (e)=>{
+function buildMailBody(data){
+  const form = document.getElementById("crop-form");
+  const lines = [];
+  lines.push("Aanmelding Duurzaam Diervoeder / Anmeldung");
+  lines.push("Datum: " + data._submitted_at);
+  lines.push("Taal / Sprache: " + data._language.toUpperCase());
+  lines.push("");
+
+  form.querySelectorAll("fieldset.section").forEach(fs => {
+    const head = fs.querySelector(".section-head h3");
+    const sectionLines = [];
+    fs.querySelectorAll("input, select, textarea").forEach(el => {
+      if(!el.name || el.name === "botcheck") return;
+      let value;
+      if(el.type === "checkbox"){ value = el.checked ? "ja" : ""; }
+      else { value = el.value.trim(); }
+      if(!value) return;
+
+      const labelEl = fs.querySelector(`label[for="${el.id}"]`);
+      let labelText = labelEl ? labelEl.textContent.replace(/\s+/g, " ").trim() : el.name;
+      sectionLines.push("  " + labelText + ": " + value);
+    });
+    if(sectionLines.length && head){
+      lines.push("=== " + head.textContent + " ===");
+      lines.push(...sectionLines);
+      lines.push("");
+    }
+  });
+
+  // append indicative footprint if calculated
+  const resultsBox = document.getElementById("results");
+  if(resultsBox && resultsBox.classList.contains("show")){
+    const total = resultsBox.querySelector(".res-total");
+    if(total){
+      lines.push("=== " + t("res_head") + " ===");
+      lines.push("  " + total.textContent.replace(/\s+/g, " ").trim());
+      lines.push("");
+    }
+  }
+  return lines.join("\n");
+}
+
+document.getElementById("crop-form").addEventListener("submit", (e)=>{
   e.preventDefault();
   const hp = document.querySelector('input[name="botcheck"]');
   if(hp && hp.value){ return; }
@@ -1036,36 +1089,14 @@ document.getElementById("crop-form").addEventListener("submit", async (e)=>{
   const data = collectData();
   if(!data.email || !data.crop){ setStatus("st_required","err"); return; }
 
-  if(!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY"){
-    setStatus("st_nokey","err");
-    return;
-  }
+  const subject = `Aanmelding ${data.crop || ""} ${data.harvest_year || ""} - ${data.company || data.contact || ""}`.trim();
+  const body = buildMailBody(data);
+  const url = "mailto:" + CONTACT_EMAIL +
+              "?subject=" + encodeURIComponent(subject) +
+              "&body=" + encodeURIComponent(body);
 
-  setStatus("st_sending","");
-  const payload = Object.assign({
-    access_key: WEB3FORMS_ACCESS_KEY,
-    subject: `Aanmelding ${data.crop || ""} ${data.harvest_year || ""} — Duurzaam Diervoeder`,
-    from_name: "Duurzaam Diervoeder formulier"
-  }, data);
-
-  try{
-    const res = await fetch("https://api.web3forms.com/submit",{
-      method:"POST",
-      headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body: JSON.stringify(payload)
-    });
-    const out = await res.json();
-    if(out.success){
-      setStatus("st_ok","ok");
-      document.getElementById("crop-form").reset();
-      document.getElementById("results").classList.remove("show");
-      updateReferencePanel();
-    } else {
-      setStatus("st_err","err");
-    }
-  }catch(err){
-    setStatus("st_err","err");
-  }
+  window.location.href = url;
+  setStatus("st_mailto","ok");
 });
 
 /* =========================================================================
@@ -1074,6 +1105,28 @@ document.getElementById("crop-form").addEventListener("submit", async (e)=>{
 document.getElementById("year").textContent = new Date().getFullYear();
 initLang();
 updateReferencePanel();
+
+/* =========================================================================
+   12. VISIT COUNTER  (subtle, no label, silent fail)
+   ========================================================================= */
+(async function(){
+  const el = document.getElementById("visit-count");
+  if(!el) return;
+  try{
+    let counted = false;
+    try{ counted = !!sessionStorage.getItem("ddv_counted"); }catch(e){}
+    const endpoint = counted
+      ? "https://abacus.jasoncameron.dev/get/duurzaamdiervoeder/visits"
+      : "https://abacus.jasoncameron.dev/hit/duurzaamdiervoeder/visits";
+    const res = await fetch(endpoint);
+    if(!res.ok) return;
+    const data = await res.json();
+    if(data && typeof data.value === "number"){
+      el.textContent = data.value.toLocaleString(LANG === "de" ? "de-DE" : "nl-NL");
+      try{ sessionStorage.setItem("ddv_counted", "1"); }catch(e){}
+    }
+  }catch(e){ /* silent */ }
+})();
 </script>
 </body>
 </html>
